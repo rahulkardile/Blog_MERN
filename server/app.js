@@ -36,7 +36,9 @@ app.get("/api/check", (req, res)=> {
         message: `Working on ${PORT}`
     })
 })
-
+app.get("/", (req, res)=>{
+    res.send("Welcome to server")
+})
 app.use('/api/uploads', express.static('uploads'))
 app.use("/api/user/", User)
 app.use("/api/post/", PostList)
