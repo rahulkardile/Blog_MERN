@@ -10,7 +10,7 @@ import cors from "cors"
 import User from "./Routes/UserRoutes.js"
 import PostList from "./Routes/POstRoutes.js"
 const app = express();
-app.use(cors({ origin: "http://localhost:5173" }));
+app.use(cors({ origin: "http://localhost:5173/" }));
 app.use(cookieParser());
 
 // for getting json data
