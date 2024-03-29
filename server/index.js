@@ -37,7 +37,7 @@ app.get("/api/check", (req, res)=> {
     })
 })
 app.get("/", (req, res)=>{
-    res.send("Welcome to server")
+    res.json("Welcome to server")
 })
 app.use('/api/uploads', express.static('uploads'))
 app.use("/api/user/", User)
