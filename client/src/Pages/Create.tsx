@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { FormEventHandler, useState } from "react";
 import "react-quill/dist/quill.snow.css";
 import ReactQuill from "react-quill";
 import { useNavigate } from "react-router-dom";
@@ -34,14 +34,16 @@ const CreatePost = () => {
 
   const navigate = useNavigate();
 
-  const createNewpost = async (e: SubmitEvent) => {
+  const createNewpost: React.FormEventHandler<HTMLFormElement> = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const data = new FormData();
     data.set("title", title);
     data.set("summary", summary);
     data.set("content", content);
-    data.set("cover", file[0]);
+    if(file !== undefined){
+      data.set("cover", file[0]);
+    }
 
     const response = await fetch("/api/post/new", {
       method: "POST",

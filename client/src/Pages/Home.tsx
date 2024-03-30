@@ -3,7 +3,7 @@ import { RootStates } from "../redux/store";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import img from "../assets/img.webp"
+import img from "../assets/img.webp";
 
 const Home = () => {
   const user = useSelector((state: RootStates) => state).user;
@@ -19,7 +19,12 @@ const Home = () => {
 
   useEffect(() => {
     const db = async () => {
-      const res = await fetch("https://blog-mern-azure.vercel.app/api/post/get");
+      const res = await fetch(
+        "/api/post/get",
+        {
+          method: "GET"
+        }
+      );
       const resData = await res.json();
 
       if (resData.success === true) {
@@ -44,9 +49,7 @@ const Home = () => {
             <div className="overflow-hidden">
               <Link to={`/blog/${item?._id}`}>
                 <img
-                  src={
-                    `/api/${item.cover}` || img
-                  }
+                  src={`/api/${item.cover}` || img}
                   alt="img"
                   className="object-cover h-48 w-auto"
                 />
