@@ -7,7 +7,7 @@ export default defineConfig({
     proxy:{
       "/api":{
         target: 'https://blog-mern-azure.vercel.app',
-        secure: false
+        secure: true
       }
     }
   },

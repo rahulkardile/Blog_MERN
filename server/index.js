@@ -10,7 +10,13 @@ import cors from "cors"
 import User from "./Routes/UserRoutes.js"
 import PostList from "./Routes/POstRoutes.js"
 const app = express();
-app.use(cors({ origin: "http://localhost:5173/" }));
+app.use(cors(
+    {
+        origin: ["https://blog-mern-azure.vercel.app/"],
+        credentials: true
+    }
+)
+);
 app.use(cookieParser());
 
 // for getting json data
@@ -31,12 +37,12 @@ try {
     console.log('Database is error ' + error);
 }
 
-app.get("/api/check", (req, res)=> {
+app.get("/api/check", (req, res) => {
     res.status(200).json({
         message: `Working on ${PORT}`
     })
 })
-app.get("/", (req, res)=>{
+app.get("/", (req, res) => {
     res.json("Welcome to server and this is rahul")
 })
 app.use('/api/uploads', express.static('uploads'))

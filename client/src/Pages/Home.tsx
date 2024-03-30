@@ -19,7 +19,7 @@ const Home = () => {
 
   useEffect(() => {
     const db = async () => {
-      const res = await fetch("/api/post/get");
+      const res = await fetch("https://blog-mern-azure.vercel.app/api/post/get");
       const resData = await res.json();
 
       if (resData.success === true) {
