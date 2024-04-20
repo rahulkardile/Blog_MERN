@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { RootStates } from "../redux/store";
 import { useSelector } from "react-redux";
 import toast from "react-hot-toast";
+import img from "../assets/img.webp";
 
 const BlogPage = () => {
 const navigate = useNavigate();
@@ -56,6 +57,9 @@ const navigate = useNavigate();
 
             <img
               src={`/api/${data?.cover}`}
+              onError={e=>{
+                e.currentTarget.src = img
+              }}
               className="w-[85%] h-[55vh] m-auto object-contain"
               alt="img"
             />

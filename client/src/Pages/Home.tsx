@@ -19,12 +19,9 @@ const Home = () => {
 
   useEffect(() => {
     const db = async () => {
-      const res = await fetch(
-        "/api/post/get",
-        {
-          method: "GET"
-        }
-      );
+      const res = await fetch("/api/post/get", {
+        method: "GET",
+      });
       const resData = await res.json();
 
       if (resData.success === true) {
@@ -49,7 +46,10 @@ const Home = () => {
             <div className="overflow-hidden">
               <Link to={`/blog/${item?._id}`}>
                 <img
-                  src={`/api/${item.cover}` || img}
+                  src={`/api/${item.cover}`}
+                  onError={e=>{
+                    e.currentTarget.src = img
+                  }}
                   alt="img"
                   className="object-cover h-48 w-auto"
                 />
