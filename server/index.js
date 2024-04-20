@@ -2,8 +2,6 @@ import express from 'express'
 import mongoose from 'mongoose';
 import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser';
-import fs from 'fs';
-import { fileURLToPath } from 'url';
 import path from 'path';
 import cors from "cors"
 
@@ -37,11 +35,6 @@ try {
     console.log('Database is error ' + error);
 }
 
-app.get("/api/check", (req, res) => {
-    res.status(200).json({
-        message: `Working on ${PORT}`
-    })
-})
 app.get("/", (req, res) => {
     res.json("Welcome to server and this is rahul")
 })

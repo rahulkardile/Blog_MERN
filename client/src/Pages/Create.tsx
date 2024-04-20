@@ -1,4 +1,4 @@
-import { FormEventHandler, useState } from "react";
+import { useState } from "react";
 import "react-quill/dist/quill.snow.css";
 import ReactQuill from "react-quill";
 import { useNavigate } from "react-router-dom";
@@ -83,7 +83,11 @@ const CreatePost = () => {
         <input
           type="file"
           className="p-4 border border-black rounded"
-          onChange={(e) => setFile(e.target.files)}
+          onChange={(e) =>{
+            if(e.target.files !== null){
+              setFile(e.target.files)
+            }
+          }}
         />
 
         <ReactQuill
