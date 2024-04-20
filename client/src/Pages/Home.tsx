@@ -19,7 +19,7 @@ const Home = () => {
 
   useEffect(() => {
     const db = async () => {
-      const res = await fetch("/api/post/get", {
+      const res = await fetch("https://blog-mern-api-topaz.vercel.app/api/post/get", {
         method: "GET",
       });
       const resData = await res.json();

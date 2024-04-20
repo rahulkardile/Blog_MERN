@@ -11,6 +11,8 @@ routes.post("/new", verifyUser, upload, async (req, res, next) => {
         const data = req.user;
         const { title, summary, content } = req.body;
 
+        console.log(" data file ", req.file.path);
+
         const cover = req.file.path
         if (!title, !summary, !content, !cover) return next(errorHandler(400, "something is mising"));
 
@@ -25,6 +27,7 @@ routes.post("/new", verifyUser, upload, async (req, res, next) => {
         res.status(200).json(NewPost);
 
     } catch (error) {
+        // console.log(error);
         next(error)
     }
 })
@@ -96,7 +99,7 @@ routes.delete("/delete/:id", verifyUser, async (req, res, next) => {
         const id = req.params.id;
 
         const List = await Post.findById(id);
-        if(List.user != userId) return next(errorHandler(400, "Bad Request"))
+        if (List.user != userId) return next(errorHandler(400, "Bad Request"))
 
         await Post.findByIdAndDelete(List._id)
 

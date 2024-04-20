@@ -7,7 +7,7 @@ export default defineConfig({
   server:{
     proxy:{
       "/api":{
-        target: 'http://localhost:3300/',
+        target: 'https://blog-mern-api-topaz.vercel.app',
       }
     }
   },
